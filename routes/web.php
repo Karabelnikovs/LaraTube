@@ -13,6 +13,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/insert_video', [App\Http\Controllers\VideoController::class, 'insert'])->name('insert.file');
 
     Route::get('/fetch_video', [App\Http\Controllers\VideoController::class, 'fetch'])->name('fetch_video');
+
+    Route::get("/edit/{id}", [App\Http\Controllers\VideoController::class, 'edit'])->name('video.edit');
+    Route::post('/update/{id}', [App\Http\Controllers\VideoController::class, 'update'])->name('video.update');
 });
 
 Route::get('/dashboard', [App\Http\Controllers\VideoController::class, 'privateFetch'])->middleware(['auth', 'verified'])->name('dashboard');

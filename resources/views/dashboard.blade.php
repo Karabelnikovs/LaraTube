@@ -24,7 +24,12 @@
                 $userID = $userID - 1;
                 ?>
                 @if (isset($users[$userID]) && $row['user_id'] == auth()->user()->id)
-                    <x-video :video="$row['video']" :title="$row['name']" :name="$users[$userID]['name']" />
+                    <div class="flex flex-col items-center">
+                        <x-video :video="$row['video']" :title="$row['name']" :name="$users[$userID]['name']" />
+                        <x-secondary-button class="mt-2" style="width: 6rem;">
+                            <a href="/edit/{{ $row['id'] }}"
+                                class=" hover:text-gray-400">Edit</a></x-secondary-button>
+                    </div>
                 @else
                 @endif
             @endforeach

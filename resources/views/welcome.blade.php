@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-800 relative">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 relative">
         <div class="flex justify-between items-center px-2 py-2 sm:px-6">
             <div class="flex items-center">
                 <a href="{{ url('/') }}" class="text-xl font-bold text-black hover:text-gray-800"><x-application-logo
@@ -30,7 +30,7 @@
                 @endif
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 py-8 sm:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 py-8 sm:px-6 py-6">
             @foreach ($videos as $row)
                 <?php
                 $userID = $row['user_id'];

@@ -30,7 +30,7 @@
         @endif
 
         <!-- Page Content -->
-        <main class="mx-auto">
+        <main class="mx-auto py-6">
             {{ $slot }}
         </main>
     </div>

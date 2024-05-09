@@ -1,8 +1,8 @@
 @props(['video', 'title', 'name'])
 
 <div class="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto">
-    <div class="w-full bg-gray-200 shadow-xl rounded-lg overflow-hidden">
-        <video class="w-full rounded-t-xl" controls>
+    <div class="w-full bg-gray-800 shadow-xl rounded-lg overflow-hidden">
+        <video class="w-full rounded-lg" controls>
             <source src="{{ asset('upload') }}/{{ $video }}" type="video/mp4">
         </video>
         <div class="p-4">
@@ -13,3 +13,9 @@
         </div>
     </div>
 </div>
+<style>
+    video {
+        height: 300px;
+        width: 100%;
+    }
+</style>
