@@ -34,8 +34,7 @@
                         </div>
                     @endif
 
-                    <input id="dropzone-file" type="file" class="hidden" name="video"
-                        value="{{ $video->video }}" />
+                    <input id="dropzone-file" type="file" class="hidden" name="video" value="$video->video" />
                 </label>
             </div>
 

@@ -60,24 +60,41 @@ class VideoController extends Controller
     }
     public function edit($id)
     {
-        $video = Video::findOrFail($id);
+        // Find the video (handle non-existent videos)
+        $video = Video::find($id);
+
+        if (!$video) {
+            return abort(404, 'Video not found'); // Or redirect to appropriate error page
+        }
+
         return view('videos.edit', compact('video'));
     }
 
     public function update(Request $request, $id)
     {
-        $video = Video::findOrFail($id);
-
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:30',
-
             'type' => 'required'
         ]);
+        $name = $request->input('name');
+        $file = $request->file('video');
+        $type = $request->input('type');
 
-        $video->update($validatedData);
 
-        return redirect()->route('fetch_video')
-            ->with('success', 'Video updated successfully.');
+        $video = Video::find($id);
+
+        if (!$video) {
+            return abort(404);
+        }
+
+        $video->update([
+            'video' => $file,
+            'name' => $name,
+            'type' => $type,
+        ]);
+
+        return redirect()->route('fetch_video');
     }
+
 
 }
