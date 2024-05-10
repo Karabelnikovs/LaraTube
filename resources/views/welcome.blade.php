@@ -30,19 +30,31 @@
                 @endif
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 py-8 sm:px-6 py-6">
-            @foreach ($videos as $row)
-                <?php
-                $userID = $row['user_id'];
-                $userID = $userID - 1;
-                ?>
-                @if ($row['type'] == 'public')
-                    @if (isset($users[$userID]))
-                        <x-video :video="$row['video']" :title="$row['name']" :name="$users[$userID]['name']" />
-                    @else
+        @if (empty($videos))
+            <div class="w-full mt-6 flex justify-center items-center flex-col">
+                <div class="flex items-center">
+                    <a href="{{ url('/') }}"
+                        class="text-xl font-bold text-black hover:text-gray-800"><x-application-logo
+                            class="block h-16 w-auto fill-current text-gray-800 dark:text-gray-200" /></a>
+                </div>
+                <h1 class="text-white text-semibold text-xl">No videos yet</h1>
+            </div>
+        @else
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 py-8 sm:px-6 py-6">
+                @foreach ($videos as $row)
+                    <?php
+                    $userID = $row['user_id'];
+                    $userID = $userID - 1;
+                    ?>
+                    @if ($row['type'] == 'public')
+                        @if (isset($users[$userID]))
+                            <x-video :video="$row['video']" :title="$row['name']" :name="$users[$userID]['name']" />
+                        @else
+                        @endif
                     @endif
-                @endif
-            @endforeach
-        </div>
+                @endforeach
+
+            </div>
+        @endif
     </div>
 </x-guest-layout>
