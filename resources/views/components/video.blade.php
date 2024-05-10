@@ -7,7 +7,7 @@
         </video>
         <div class="p-4 flex flex-row">
             <div>
-                <h3 class="text-xl text-gray-800 dark:text-gray-200">
+                <h3 class="text-xl dark:text-gray-200 text-gray-800">
                     {{ $title }}
                 </h3>
                 <p class="dark:text-gray-500"> by {{ $name }}</p>

@@ -62,7 +62,13 @@
             @if ($errors->has('type'))
                 <li>{{ $errors->first('type') }}</li>
             @endif
+            @if ($errors->has('video'))
+                <li>{{ $errors->first('video') }}</li>
+            @endif
 
         </ul>
+
+        {{-- <pre class="text-white"><?= var_dump($video) ?></pre> --}}
+
     </div>
 </x-app-layout>
